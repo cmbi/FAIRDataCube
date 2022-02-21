@@ -1,0 +1,13 @@
+PREFIX isatab: <https://isatab/>
+PREFIX periscope: <https://periscope.umcn.nl/>
+SELECT ?source_name ?value
+WHERE
+{
+  ?source isatab:has_factor_value ?factor_value .
+  ?factor_value isatab:has_study_factor periscope:study_factor_sex .
+  ?factor_value isatab:has_value ?value .
+
+  ?study isatab:has_process ?study_process .
+  ?study_process isatab:has_input ?source .
+  ?source isatab:has_name ?source_name .
+}
